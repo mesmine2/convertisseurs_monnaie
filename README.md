@@ -1,59 +1,40 @@
-# ConvertisseurDevises
+# 💱 Convertisseur FCFA
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.5.
+Application Angular moderne de conversion entre le Franc CFA (XAF) et d'autres devises (EUR, USD, GBP), avec calcul réactif en temps réel.
 
-## Development server
+## Fonctionnalités
+- Conversion instantanée entre 4 devises (FCFA, Euro, Dollar US, Livre Sterling)
+- Inversion rapide des devises source/cible en un clic
+- Calcul entièrement réactif : le résultat se met à jour automatiquement à chaque saisie
+- Interface responsive (mobile, tablette, desktop)
 
-To start a local development server, run:
+### Desktop
+![Desktop screenshot](./screenshots/desktop.jpeg)
 
-```bash
-ng serve
+### Mobile
+![Mobile screenshot](./screenshots/mobile.jpeg)
+
+## Stack technique
+- Angular (dernière version), composants standalone
+- Signals (`signal`, `computed`) pour un état 100% réactif
+- Aucune dépendance externe, aucun appel réseau — calcul entièrement côté client
+- Pipe `number` pour le formatage des résultats
+
+## Fonctionnement
+Le taux de chaque devise est exprimé en "combien de FCFA pour 1 unité". La conversion passe systématiquement par le FCFA comme pivot :
+
+```
+montant → FCFA (via la devise source) → devise cible
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Le signal `computed()` recalcule automatiquement le résultat dès que le montant, la devise source, ou la devise cible change — sans code manuel de synchronisation.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Lancer le projet
 
 ```bash
-ng generate component component-name
+npm install
+ng serve -o
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Démo
+[https://convertisseurs-monnaie.vercel.app/]
