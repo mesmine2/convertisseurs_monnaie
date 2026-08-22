@@ -1,0 +1,87 @@
+<section class="banniere">
+  <svg class="icone-svg icone-banniere" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg>
+  <h1>Convertisseur FCFA</h1>
+  <p>Convertissez instantanément entre le Franc CFA et les principales devises internationales.</p>
+</section>
+
+<main class="container">
+  <div class="carte-convertisseur">
+    <label>
+      Montant
+      <input type="number" [value]="service.montant()" (input)="onMontantChange($event)" min="0">
+    </label>
+
+    <div class="selecteurs">
+      <label>
+        De
+        <select [value]="service.deviseSource()" (change)="onSourceChange($event)">
+          @for (d of devises; track d.code) { <option [value]="d.code">{{ d.code }} — {{ d.nom }}</option> }
+        </select>
+      </label>
+      <button class="btn-inverser" (click)="service.inverser()" aria-label="Inverser">
+        <svg class="icone-svg" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+      </button>
+      <label>
+        Vers
+        <select [value]="service.deviseCible()" (change)="onCibleChange($event)">
+          @for (d of devises; track d.code) { <option [value]="d.code">{{ d.code }} — {{ d.nom }}</option> }
+        </select>
+      </label>
+    </div>
+
+    <div class="resultat">
+      <span class="valeur">{{ service.resultat() | number:'1.2-2' }}</span>
+      <span class="code">{{ service.deviseCible() }}</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn-enregistrer" (click)="service.enregistrerConversion()">
+        <svg class="icone-svg" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+        Enregistrer
+      </button>
+      <a routerLink="/historique" class="lien-historique">
+        Voir l'historique
+        <svg class="icone-svg" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="carte-taux">
+    <h2>
+      <svg class="icone-svg" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-4 3 3 5-6"/></svg>
+      Taux actuels
+    </h2>
+    <table>
+      <thead><tr><th>Devise</th><th>1 unité =</th></tr></thead>
+      <tbody>
+        @for (d of devises; track d.code) {
+          <tr>
+            <td><span class="badge-devise">{{ d.code }}</span> {{ d.nom }}</td>
+            <td>{{ d.tauxVersXAF | number:'1.2-2' }} FCFA</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <section class="atouts">
+    <h2>Pourquoi cet outil</h2>
+    <div class="grille-atouts">
+      <div class="atout">
+        <svg class="icone-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <h3>Instantané</h3>
+        <p>Le résultat se recalcule en temps réel, sans bouton à cliquer.</p>
+      </div>
+      <div class="atout">
+        <svg class="icone-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"/></svg>
+        <h3>5 devises</h3>
+        <p>FCFA, Euro, Dollar, Livre Sterling, Naira.</p>
+      </div>
+      <div class="atout">
+        <svg class="icone-svg" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-4 3 3 5-6"/></svg>
+        <h3>Historique</h3>
+        <p>Chaque conversion peut être enregistrée avec date et heure.</p>
+      </div>
+    </div>
+  </section>
+</main>

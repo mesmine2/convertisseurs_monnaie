@@ -1,0 +1,47 @@
+.banniere-secondaire {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: white; padding: clamp(2rem, 5vw, 2.5rem) 1.2rem; text-align: center;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.banniere-secondaire::before {
+  content: '';
+  position: absolute; width: 160px; height: 160px; border-radius: 50%;
+  top: -50px; left: -30px; background: rgba(255,255,255,0.07); z-index: -1;
+}
+.banniere-secondaire .icone-svg { width: 2rem; height: 2rem; stroke: var(--accent); margin-bottom: 0.5rem; }
+.banniere-secondaire h1 { margin: 0 0 0.7rem; font-size: clamp(1.2rem, 3.5vw, 1.5rem); }
+.lien-retour { color: white; opacity: 0.9; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+.lien-retour .icone-svg { width: 1rem; height: 1rem; }
+
+.stats { display: flex; gap: 1rem; max-width: 680px; margin: -1.8rem auto 1.5rem; padding: 0 1.2rem; position: relative; z-index: 1; }
+.stat-carte { flex: 1; background: var(--surface); border-radius: var(--radius-sm); padding: 1.1rem; text-align: center; box-shadow: var(--shadow-lg); }
+.stat-valeur { display: block; font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: 700; color: var(--brand); }
+.stat-label { font-size: 0.76rem; color: var(--muted); }
+
+.etat-vide { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+.etat-vide .icone-svg { width: 2.5rem; height: 2.5rem; stroke: var(--border); margin-bottom: 1rem; }
+.btn-retour { display: inline-block; margin-top: 1rem; color: var(--brand); font-weight: 600; text-decoration: none; }
+
+.btn-effacer {
+  display: flex; align-items: center; gap: 0.4rem; margin: 0 0 1rem; background: var(--surface);
+  border: 1.5px solid var(--border); padding: 0.55rem 1rem; border-radius: var(--radius-sm);
+  cursor: pointer; color: var(--muted); font-family: inherit; font-size: 0.85rem;
+}
+.btn-effacer .icone-svg { width: 1rem; height: 1rem; }
+
+.liste-historique { list-style: none; padding: 0; margin: 0; }
+.ligne-historique {
+  background: var(--surface); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; box-shadow: var(--shadow);
+}
+.montant, .resultat { font-weight: 600; font-size: 0.92rem; display: flex; align-items: center; }
+.fleche { width: 1rem; height: 1rem; stroke: var(--accent); }
+.badge-devise { background: var(--brand); color: white; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 5px; margin-right: 0.4rem; }
+.badge-accent { background: var(--accent); }
+.date { margin-left: auto; font-size: 0.76rem; color: var(--muted); }
+
+@media (max-width: 480px) {
+  .stats { flex-direction: column; }
+  .ligne-historique { justify-content: center; text-align: center; }
+  .date { margin-left: 0; width: 100%; text-align: center; }
+}

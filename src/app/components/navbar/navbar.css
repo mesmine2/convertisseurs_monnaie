@@ -1,0 +1,27 @@
+/* components/navbar/navbar.component.css */
+.navbar {
+  background: var(--surface);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  position: sticky; top: 0; z-index: 10;
+}
+.brand {
+  font-weight: 700;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.brand .icone-svg { width: 1.3rem; height: 1.3rem; stroke: var(--accent); stroke-width: 2.5; }
+.liens { display: flex; gap: 1.4rem; }
+.liens a { text-decoration: none; color: var(--muted); font-size: 0.9rem; padding-bottom: 4px; font-weight: 500; transition: color 0.15s; }
+.liens a.actif, .liens a:hover { color: var(--brand); border-bottom: 2px solid var(--accent); }
+
+@media (max-width: 420px) {
+  .navbar { padding: 0.8rem 1rem; }
+  .liens { gap: 0.9rem; }
+  .liens a { font-size: 0.82rem; }
+}

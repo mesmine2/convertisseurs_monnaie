@@ -1,15 +1,36 @@
 :root {
-  --brand: #1a5f3f;
-  --brand-light: #2d8f5f;
-  --bg: #f4f7f5;
-  --text: #2b2b2b;
-  --muted: #595959;
-  --radius: 12px;
+  --brand: #5B4FE9;        /* violet Angular-esque */
+  --brand-light: #7C72F0;
+  --brand-dark: #4338CA;
+  --accent: #FF6B4A;        /* corail, contraste chaud */
+  --accent-light: #FF8A6E;
+  --success: #10B981;
+  --bg: #F5F5FA;
+  --surface: #FFFFFF;
+  --text: #1A1A2E;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 20px rgba(91, 79, 233, 0.08);
+  --shadow-lg: 0 12px 32px rgba(91, 79, 233, 0.14);
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.2rem 3rem;
+}
+
+/* icônes SVG inline réutilisables */
+.icone-svg { width: 1.4em; height: 1.4em; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }

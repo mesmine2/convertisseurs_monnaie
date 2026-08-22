@@ -1,0 +1,44 @@
+<section class="banniere-secondaire">
+  <svg class="icone-svg" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-4 3 3 5-6"/></svg>
+  <h1>Historique des conversions</h1>
+  <a routerLink="/" class="lien-retour">
+    <svg class="icone-svg" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Retour au convertisseur
+  </a>
+</section>
+
+<div class="stats">
+  <div class="stat-carte">
+    <span class="stat-valeur">{{ total() }}</span>
+    <span class="stat-label">Conversion(s)</span>
+  </div>
+  <div class="stat-carte">
+    <span class="stat-valeur">{{ totalConverti() | number:'1.0-0' }}</span>
+    <span class="stat-label">Total converti</span>
+  </div>
+</div>
+
+<main class="container">
+  @if (historique().length === 0) {
+    <div class="etat-vide">
+      <svg class="icone-svg" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>
+      <p>Aucune conversion enregistrée pour le moment.</p>
+      <a routerLink="/" class="btn-retour">Faire une conversion</a>
+    </div>
+  } @else {
+    <button class="btn-effacer" (click)="service.effacerHistorique()">
+      <svg class="icone-svg" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/></svg>
+      Tout effacer
+    </button>
+    <ul class="liste-historique">
+      @for (c of historique(); track c.id) {
+        <li class="ligne-historique">
+          <span class="montant"><span class="badge-devise">{{ c.deviseSource }}</span>{{ c.montant | number:'1.0-2' }}</span>
+          <svg class="icone-svg fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span class="resultat"><span class="badge-devise badge-accent">{{ c.deviseCible }}</span>{{ c.resultat | number:'1.2-2' }}</span>
+          <span class="date">{{ c.date | date:'dd/MM/yyyy HH:mm' }}</span>
+        </li>
+      }
+    </ul>
+  }
+</main>

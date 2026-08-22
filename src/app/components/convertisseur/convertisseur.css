@@ -1,0 +1,106 @@
+
+.banniere {
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: white;
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 4rem) 1.2rem clamp(4rem, 8vw, 6rem);
+  margin-bottom: -3rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* empêche tout débordement visuel du contenu enfant */
+}
+.banniere::before,
+.banniere::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  z-index: -1;
+}
+.banniere::before {
+  width: 200px; height: 200px;
+  top: -60px; right: -40px;
+}
+.banniere::after {
+  width: 140px; height: 140px;
+  bottom: -50px; left: -30px;
+  background: rgba(255,107,74,0.15); /* touche corail discrète */
+}
+.icone-banniere { width: 2.4rem; height: 2.4rem; stroke: var(--accent); margin-bottom: 0.8rem; }
+.banniere h1 { margin: 0 0 0.5rem; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; position: relative; }
+.banniere p { opacity: 0.9; margin: 0; font-size: clamp(0.85rem, 2vw, 1rem); position: relative; }
+
+.carte-convertisseur {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 4vw, 2rem);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+.carte-convertisseur label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 1.1rem; font-weight: 500; }
+.carte-convertisseur input, .carte-convertisseur select {
+  display: block; width: 100%; padding: 0.75rem 0.9rem; margin-top: 0.4rem;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem;
+  font-family: inherit; background: var(--bg); transition: border-color 0.15s;
+}
+.carte-convertisseur input:focus, .carte-convertisseur select:focus { outline: none; border-color: var(--brand); }
+
+.selecteurs { display: flex; align-items: center; gap: 0.7rem; }
+.selecteurs label { flex: 1; margin-bottom: 0; min-width: 0; }
+.btn-inverser {
+  margin-top: 1.4rem; background: var(--accent); color: white; border: none;
+  border-radius: 50%; width: 44px; height: 44px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: transform 0.2s; box-shadow: 0 4px 12px rgba(255,107,74,0.3);
+}
+.btn-inverser:hover { transform: rotate(180deg); }
+.btn-inverser .icone-svg { width: 1.2rem; height: 1.2rem; }
+
+.resultat {
+  margin-top: 1.5rem; text-align: center; padding: clamp(1rem, 3vw, 1.5rem);
+  background: linear-gradient(135deg, var(--bg), #EEEBFC); border-radius: var(--radius);
+}
+.resultat .valeur { font-size: clamp(1.7rem, 5vw, 2.4rem); font-weight: 700; color: var(--brand); }
+.resultat .code { font-size: 1.1rem; color: var(--muted); margin-left: 0.4rem; font-weight: 600; }
+
+.actions { display: flex; justify-content: space-between; align-items: center; margin-top: 1.3rem; flex-wrap: wrap; gap: 0.8rem; }
+.btn-enregistrer {
+  background: var(--success); color: white; border: none; padding: 0.7rem 1.3rem;
+  border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; font-family: inherit;
+  display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: opacity 0.15s;
+}
+.btn-enregistrer:hover { opacity: 0.9; }
+.btn-enregistrer .icone-svg { width: 1.1rem; height: 1.1rem; }
+.lien-historique { color: var(--brand); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
+.lien-historique .icone-svg { width: 1rem; height: 1rem; }
+
+.carte-taux { background: var(--surface); border-radius: var(--radius); padding: clamp(1.2rem, 4vw, 1.6rem); margin-top: 1.5rem; box-shadow: var(--shadow); }
+.carte-taux h2 { font-size: 1rem; margin: 0 0 1rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
+.carte-taux h2 .icone-svg { width: 1.2rem; height: 1.2rem; stroke: var(--brand); }
+.carte-taux table { width: 100%; border-collapse: collapse; }
+.carte-taux td, .carte-taux th { padding: 0.65rem 0.4rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+.carte-taux th { color: var(--muted); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.badge-devise {
+  display: inline-block; background: var(--brand); color: white; font-size: 0.7rem;
+  font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 5px; margin-right: 0.4rem;
+}
+
+.atouts { margin-top: 2.5rem; }
+.atouts h2 { text-align: center; font-size: 1.2rem; margin-bottom: 1.5rem; }
+.grille-atouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.1rem; }
+.atout {
+  background: var(--surface); border-radius: var(--radius); padding: 1.4rem 1.1rem;
+  text-align: center; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+}
+.atout:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.atout .icone-svg { width: 1.8rem; height: 1.8rem; stroke: var(--accent); margin-bottom: 0.6rem; }
+.atout h3 { margin: 0 0 0.4rem; font-size: 0.95rem; }
+.atout p { margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+@media (max-width: 480px) {
+  .selecteurs { flex-direction: column; align-items: stretch; }
+  .btn-inverser { align-self: center; margin-top: 0.5rem; }
+  .actions { flex-direction: column; align-items: stretch; text-align: center; }
+  .lien-historique { justify-content: center; }
+}
